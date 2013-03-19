@@ -11,7 +11,7 @@ else
     mv $1 $2$SUFFIX
   else
     echo "Could not switch files; both $2- and $2= exist :/"
-    exit
+    exit 1
   fi
 fi
 mv $2 $1
