@@ -1,5 +1,18 @@
 #!/bin/bash
+SUFFIX="-"
 
-mv $1 $2-
+if [ ! -f $2$SUFFIX ];
+then
+  mv $1 $2$SUFFIX
+else
+  SUFFIX="="
+  if [ ! -f $2$SUFFIX ];
+  then
+    mv $1 $2$SUFFIX
+  else
+    echo "Could not switch files; both $2- and $2= exist :/"
+    exit
+  fi
+fi
 mv $2 $1
-mv $2- $2
+mv $2$SUFFIX $2
